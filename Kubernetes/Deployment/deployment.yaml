@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+ name: mydeployment
+ labels:
+  app: myfront
+spec:
+ selector:
+  matchLabels:
+    app: myfront
+ replicas: 3
+ template:
+  metadata:
+    name: mypod
+    labels:
+     app: myfront #It should be same as selector label(Replicaset will only handle/monitor pods with same label as given in selector)
+  spec:
+   containers:
+     - name: mycont
+       image: httpd

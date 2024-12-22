@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Service
+metadata:
+ name: httpdservice
+ labels:
+  app: myapp
+spec:
+ type: NodePort
+ ports:
+  - nodePort: 30003 #30000–32767
+    port: 80
+    targetPort: 80
+ selector:
+  app: myfront
+
+
+#nodePort: 30003: The port exposed on every node in the cluster. External clients can access this port on any node in the cluster to reach the service.
+
+#port: 80: The port that the service listens on within the cluster. Other services and pods inside the cluster can access the service through this port.
+
+#targetPort: 80: The port on the container where the application is actually running. Traffic that hits the service on port (or nodePort) is forwarded to this port inside the container."""

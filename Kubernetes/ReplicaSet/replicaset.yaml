@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+ name: myreplicaset
+ labels:
+  app: myapp
+spec:
+  selector:
+    matchLabels:
+      app: myapp
+  replicas: 3
+  template:
+   metadata:
+    name: mypod
+    labels:
+      app: myapp #It should be same as selector label(Replicaset will only handle/monitor pods with same label as given in selector)
+   spec:
+      containers:
+        - name: mycont
+          image: nginx
