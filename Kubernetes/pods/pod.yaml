@@ -8,18 +8,3 @@ spec:
  containers:
   - name: mycont2
     image: nginx
-
----
-
-apiVersion: v1
-kind: Pod
-metadata:
-  name: mypods
-  labels:
-    app: myapp
-spec:
-  containers:
-    - name: mycont2
-      image: httpd
-      ports:
-        - containerPort: 80
